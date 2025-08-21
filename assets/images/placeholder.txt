@@ -1,0 +1,27 @@
+# Placeholder untuk folder images
+
+Folder ini berisi gambar-gambar untuk website Dusun Dagan.
+
+## Struktur folder:
+- hero/ - Gambar untuk hero section
+- budaya/ - Gambar budaya lokal
+- umkm/ - Gambar produk UMKM
+- tokoh/ - Foto tokoh masyarakat
+
+## Format gambar yang didukung:
+- JPG/JPEG
+- PNG
+- WebP (recommended untuk performance)
+- SVG (untuk icons)
+
+## Optimasi gambar:
+- Compress gambar sebelum upload
+- Resize sesuai kebutuhan
+- Gunakan WebP format jika memungkinkan
+- Tambahkan alt text untuk accessibility
+
+## Contoh nama file:
+- hero-banner.jpg
+- budaya-kuda-lumping.jpg
+- umkm-bambu-kerajinan.jpg
+- tokoh-kepala-dusun.jpg

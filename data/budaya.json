@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nama": "Tari Kuda Lumping",
+    "deskripsi": "Tarian tradisional yang masih dilestarikan hingga kini dengan gerakan yang dinamis dan penuh makna",
+    "foto": "assets/images/budaya/kuda-lumping.jpg"
+  },
+  {
+    "id": 2,
+    "nama": "Upacara Slametan",
+    "deskripsi": "Tradisi syukuran yang rutin dilakukan warga sebagai bentuk rasa syukur dan silaturahmi",
+    "foto": "assets/images/budaya/slametan.jpg"
+  },
+  {
+    "id": 3,
+    "nama": "Wayang Kulit",
+    "deskripsi": "Pertunjukan wayang kulit yang menghibur dan sarat dengan nilai-nilai moral dan budaya",
+    "foto": "assets/images/budaya/wayang-kulit.jpg"
+  },
+  {
+    "id": 4,
+    "nama": "Gamelan Tradisional",
+    "deskripsi": "Musik gamelan yang dimainkan dalam berbagai acara adat dan perayaan",
+    "foto": "assets/images/budaya/gamelan.jpg"
+  }
+]

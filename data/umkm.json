@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "nama": "Kerajinan Bambu",
+    "deskripsi": "Kerajinan bambu berkualitas tinggi dengan desain modern",
+    "foto": "assets/images/umkm/bambu1.jpg",
+    "kategori": "Kerajinan",
+    "kontak": "08123456789"
+  },
+  {
+    "id": 2,
+    "nama": "Warung Gudeg Bu Tini",
+    "deskripsi": "Gudeg original dengan cita rasa khas Dusun Dagan",
+    "foto": "assets/images/umkm/gudeg1.jpg",
+    "kategori": "Kuliner",
+    "kontak": "08198765432"
+  },
+  {
+    "id": 3,
+    "nama": "Toko Batik Mbak Sari",
+    "deskripsi": "Batik tulis dan cap dengan motif khas daerah",
+    "foto": "assets/images/umkm/batik1.jpg",
+    "kategori": "Fashion",
+    "kontak": "08187654321"
+  },
+  {
+    "id": 4,
+    "nama": "Kedai Kopi Pak Joko",
+    "deskripsi": "Kopi robusta dan arabika dari perkebunan lokal",
+    "foto": "assets/images/umkm/kopi1.jpg",
+    "kategori": "Kuliner",
+    "kontak": "08176543210"
+  }
+]

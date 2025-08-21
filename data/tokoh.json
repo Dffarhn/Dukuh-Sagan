@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nama": "Pak Sumarto",
+    "jabatan": "Kepala Dusun",
+    "foto": "assets/images/tokoh/kepala-dusun.jpg",
+    "deskripsi": "Memimpin Dusun Dagan sejak 2015 dengan dedikasi tinggi untuk kemajuan masyarakat"
+  },
+  {
+    "id": 2,
+    "nama": "Bu Sari",
+    "jabatan": "Ketua PKK",
+    "foto": "assets/images/tokoh/ketua-pkk.jpg",
+    "deskripsi": "Aktif mengembangkan UMKM lokal dan memberdayakan perempuan dusun"
+  },
+  {
+    "id": 3,
+    "nama": "Pak Slamet",
+    "jabatan": "Ketua Karang Taruna",
+    "foto": "assets/images/tokoh/ketua-karang-taruna.jpg",
+    "deskripsi": "Menggerakkan pemuda untuk berkontribusi dalam pembangunan dusun"
+  },
+  {
+    "id": 4,
+    "nama": "Bu Tini",
+    "jabatan": "Ketua Kelompok Tani",
+    "foto": "assets/images/tokoh/ketua-tani.jpg",
+    "deskripsi": "Memimpin pengembangan pertanian organik dan berkelanjutan"
+  }
+]

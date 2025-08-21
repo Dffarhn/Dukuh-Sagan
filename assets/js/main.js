@@ -1,6 +1,64 @@
 // Main JavaScript untuk Dusun Dagan Landing Page
 
+// Font Awesome Load Check
+function checkFontAwesome() {
+    const testIcon = document.createElement('i');
+    testIcon.className = 'fas fa-check';
+    testIcon.style.position = 'absolute';
+    testIcon.style.left = '-9999px';
+    testIcon.style.visibility = 'hidden';
+    document.body.appendChild(testIcon);
+    
+    const computedStyle = window.getComputedStyle(testIcon, ':before');
+    const content = computedStyle.getPropertyValue('content');
+    
+    document.body.removeChild(testIcon);
+    
+    // Jika Font Awesome tidak terload, coba load ulang
+    if (content === 'none' || content === 'normal' || content === '') {
+        console.log('Font Awesome tidak terload, mencoba load ulang...');
+        
+        // Tambahkan class untuk menandakan Font Awesome gagal
+        document.body.classList.add('font-awesome-failed');
+        
+        // Hapus link Font Awesome yang ada
+        const existingLinks = document.querySelectorAll('link[href*="font-awesome"], link[href*="fontawesome"]');
+        existingLinks.forEach(link => link.remove());
+        
+        // Load Font Awesome dari CDN alternatif
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+        link.integrity = 'sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==';
+        link.crossOrigin = 'anonymous';
+        link.referrerPolicy = 'no-referrer';
+        
+        link.onload = function() {
+            console.log('Font Awesome berhasil di-load ulang');
+            document.body.classList.remove('font-awesome-failed');
+            // Refresh halaman setelah Font Awesome terload
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        };
+        
+        link.onerror = function() {
+            console.log('Gagal load Font Awesome, menggunakan fallback');
+            // Tetap gunakan class font-awesome-failed untuk menampilkan fallback
+        };
+        
+        document.head.appendChild(link);
+    } else {
+        console.log('Font Awesome sudah terload dengan benar');
+        document.body.classList.remove('font-awesome-failed');
+    }
+}
+
+// Jalankan pengecekan Font Awesome setelah halaman terload
 document.addEventListener('DOMContentLoaded', function() {
+    // Tunggu sebentar untuk memastikan semua resource terload
+    setTimeout(checkFontAwesome, 2000);
+    
     // Loading Screen
     const loadingScreen = document.getElementById('loading-screen');
     
@@ -146,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Contact Form Handling (jika ada)
+    // Contact Form Handling
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -156,10 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(this);
             const name = formData.get('name');
             const email = formData.get('email');
+            const subject = formData.get('subject');
             const message = formData.get('message');
             
             // Simple validation
-            if (!name || !email || !message) {
+            if (!name || !email || !subject || !message) {
                 alert('Mohon lengkapi semua field!');
                 return;
             }
@@ -171,8 +230,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate form submission
-            alert('Terima kasih! Pesan Anda telah terkirim.');
+            // Create WhatsApp message
+            const whatsappMessage = `Halo! Saya ${name} ingin menghubungi Dusun Dagan.
+
+Subjek: ${subject}
+Email: ${email}
+
+Pesan:
+${message}
+
+Terima kasih!`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Get WhatsApp number from PHP (you'll need to pass this to JavaScript)
+            // For now, we'll use a default number
+            const whatsappNumber = window.whatsappNumber || '6281234567890'; // Use from PHP or fallback
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('Form berhasil dikirim! Anda akan diarahkan ke WhatsApp.');
+            
+            // Reset form
             this.reset();
         });
     }

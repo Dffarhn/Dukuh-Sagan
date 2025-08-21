@@ -775,3 +775,108 @@ html {
         margin-bottom: 4px;
     }
 }
+
+/* Fallback untuk Font Awesome Icons */
+.fas.fa-tree::before { content: "🌳"; }
+.fas.fa-leaf::before { content: "🍃"; }
+.fas.fa-seedling::before { content: "🌱"; }
+.fas.fa-mountain::before { content: "⛰️"; }
+.fas.fa-store::before { content: "🏪"; }
+.fas.fa-theater-masks::before { content: "🎭"; }
+.fas.fa-users::before { content: "👥"; }
+.fas.fa-history::before { content: "📜"; }
+.fas.fa-chevron-down::before { content: "▼"; }
+.fas.fa-bars::before { content: "☰"; }
+.fas.fa-check::before { content: "✓"; }
+
+/* Fallback untuk icon yang tidak terdeteksi Font Awesome */
+.fas:not([class*="fa-"])::before,
+.far:not([class*="fa-"])::before,
+.fab:not([class*="fa-"])::before {
+    content: "●";
+    font-family: Arial, sans-serif;
+}
+
+/* Fallback SVG Icons - hanya tampil jika Font Awesome tidak terload */
+.fallback-icon {
+    display: none;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
+/* Tampilkan SVG fallback jika Font Awesome tidak terdeteksi */
+.fas:not([class*="fa-"]) .fallback-icon,
+.far:not([class*="fa-"]) .fallback-icon,
+.fab:not([class*="fa-"]) .fallback-icon {
+    display: inline-block;
+}
+
+/* Atau jika pseudo-element tidak ada content */
+.fas.fa-tree:empty .fallback-icon,
+.fas.fa-leaf:empty .fallback-icon,
+.fas.fa-seedling:empty .fallback-icon,
+.fas.fa-mountain:empty .fallback-icon,
+.fas.fa-store:empty .fallback-icon,
+.fas.fa-theater-masks:empty .fallback-icon,
+.fas.fa-users:empty .fallback-icon,
+.fas.fa-history:empty .fallback-icon,
+.fas.fa-chevron-down:empty .fallback-icon,
+.fas.fa-bars:empty .fallback-icon {
+    display: inline-block;
+}
+
+/* JavaScript akan menambahkan class ini jika Font Awesome tidak terload */
+.font-awesome-failed .fallback-icon {
+    display: inline-block;
+}
+
+.font-awesome-failed .fas::before,
+.font-awesome-failed .far::before,
+.font-awesome-failed .fab::before {
+    content: none !important;
+}
+
+/* Class untuk Font Awesome yang berhasil terload */
+.font-awesome-loaded .fallback-icon {
+    display: none !important;
+}
+
+/* Fallback untuk emoji jika Font Awesome gagal */
+.font-awesome-failed .fas.fa-tree::before { content: "🌳"; }
+.font-awesome-failed .fas.fa-leaf::before { content: "🍃"; }
+.font-awesome-failed .fas.fa-seedling::before { content: "🌱"; }
+.font-awesome-failed .fas.fa-mountain::before { content: "⛰️"; }
+.font-awesome-failed .fas.fa-store::before { content: "🏪"; }
+.font-awesome-failed .fas.fa-theater-masks::before { content: "🎭"; }
+.font-awesome-failed .fas.fa-users::before { content: "👥"; }
+.font-awesome-failed .fas.fa-history::before { content: "📜"; }
+.font-awesome-failed .fas.fa-chevron-down::before { content: "▼"; }
+.font-awesome-failed .fas.fa-bars::before { content: "☰"; }
+.font-awesome-failed .fas.fa-check::before { content: "✓"; }
+.font-awesome-failed .fas.fa-calendar-alt::before { content: "📅"; }
+.font-awesome-failed .fas.fa-trophy::before { content: "🏆"; }
+.font-awesome-failed .fas.fa-th-large::before { content: "⊞"; }
+.font-awesome-failed .fas.fa-hammer::before { content: "🔨"; }
+.font-awesome-failed .fas.fa-utensils::before { content: "🍴"; }
+.font-awesome-failed .fas.fa-tshirt::before { content: "👕"; }
+.font-awesome-failed .fas.fa-eye::before { content: "👁️"; }
+.font-awesome-failed .fas.fa-phone::before { content: "📞"; }
+.font-awesome-failed .fas.fa-phone-alt::before { content: "📞"; }
+.font-awesome-failed .fas.fa-chevron-right::before { content: "▶"; }
+.font-awesome-failed .fas.fa-map-marker-alt::before { content: "📍"; }
+.font-awesome-failed .fas.fa-envelope::before { content: "✉️"; }
+.font-awesome-failed .fas.fa-clock::before { content: "🕐"; }
+.font-awesome-failed .fas.fa-check-circle::before { content: "✅"; }
+.font-awesome-failed .fas.fa-paper-plane::before { content: "✈️"; }
+.font-awesome-failed .fas.fa-chevron-up::before { content: "▲"; }
+.font-awesome-failed .fas.fa-heart::before { content: "❤️"; }
+.font-awesome-failed .fas.fa-rocket::before { content: "🚀"; }
+.font-awesome-failed .fas.fa-image::before { content: "🖼️"; }
+.font-awesome-failed .fas.fa-user-circle::before { content: "👤"; }
+.font-awesome-failed .fas.fa-crown::before { content: "👑"; }
+.font-awesome-failed .fas.fa-star::before { content: "⭐"; }
+.font-awesome-failed .fas.fa-handshake::before { content: "🤝"; }
+.font-awesome-failed .fab.fa-whatsapp::before { content: "📱"; }
+.font-awesome-failed .fab.fa-facebook::before { content: "📘"; }
+.font-awesome-failed .fab.fa-instagram::before { content: "📷"; }

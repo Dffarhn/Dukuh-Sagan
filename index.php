@@ -39,10 +39,38 @@ require_once 'config/config.php';
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Font Awesome Load Check Script -->
+    <script>
+        // Cek Font Awesome sebelum halaman dimuat
+        function preloadFontAwesome() {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+            link.integrity = 'sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==';
+            link.crossOrigin = 'anonymous';
+            link.referrerPolicy = 'no-referrer';
+            
+            link.onload = function() {
+                console.log('Font Awesome berhasil di-load');
+                document.documentElement.classList.add('font-awesome-loaded');
+            };
+            
+            link.onerror = function() {
+                console.log('Font Awesome gagal di-load, menggunakan fallback');
+                document.documentElement.classList.add('font-awesome-failed');
+            };
+            
+            document.head.appendChild(link);
+        }
+        
+        // Jalankan preload
+        preloadFontAwesome();
+    </script>
     
     <!-- Tailwind Config -->
     <script>
@@ -144,7 +172,11 @@ require_once 'config/config.php';
 
     <!-- Back to Top Button -->
     <div id="back-to-top" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-chevron-up">
+            <svg class="fallback-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+            </svg>
+        </i>
     </div>
 
     <!-- jQuery -->

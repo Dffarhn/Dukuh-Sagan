@@ -22,7 +22,11 @@
             <!-- Mobile Menu Button -->
             <div class="md:hidden">
                 <button id="mobile-menu-btn" class="text-white hover:text-light-green transition-colors">
-                    <i class="fas fa-bars text-xl"></i>
+                    <i class="fas fa-bars text-xl">
+                        <svg class="fallback-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                        </svg>
+                    </i>
                 </button>
             </div>
         </div>

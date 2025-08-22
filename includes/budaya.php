@@ -16,42 +16,90 @@ $budayaData = getBudaya();
             </p>
         </div>
         
-        <!-- Budaya Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <?php foreach ($budayaData as $budaya): ?>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-shadow fade-in">
-                <!-- Image -->
-                <div class="h-48 bg-gradient-to-br from-primary-green to-secondary-green relative overflow-hidden">
-                    <?php if (file_exists($budaya['foto'])): ?>
-                        <!-- Foto asli jika ada -->
-                        <img src="<?php echo htmlspecialchars($budaya['foto']); ?>" 
-                             alt="<?php echo htmlspecialchars($budaya['nama']); ?>" 
-                             class="w-full h-full object-cover">
-                    <?php else: ?>
-                        <!-- Fallback jika foto tidak ada -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-theater-masks text-6xl text-white opacity-50">
-                                <svg class="fallback-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                </svg>
-                            </i>
+        <!-- Budaya Carousel Container -->
+        <div class="relative overflow-hidden">
+            <!-- Carousel Track -->
+                            <div class="budaya-carousel-track flex">
+                <?php foreach ($budayaData as $budaya): ?>
+                <div class="budaya-carousel-item flex-shrink-0 w-80 mx-4">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <!-- Image -->
+                        <div class="h-48 bg-gradient-to-br from-primary-green to-secondary-green relative overflow-hidden">
+                            <?php if (file_exists($budaya['foto'])): ?>
+                                <!-- Foto asli jika ada -->
+                                <img src="<?php echo htmlspecialchars($budaya['foto']); ?>" 
+                                     alt="<?php echo htmlspecialchars($budaya['nama']); ?>" 
+                                     class="w-full h-full object-cover">
+                            <?php else: ?>
+                                <!-- Fallback jika foto tidak ada -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fas fa-theater-masks text-6xl text-white opacity-50">
+                                        <svg class="fallback-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                    </i>
+                                </div>
+                                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%2316a34a%22 width=%22400%22 height=%22300%22/%3E%3Ccircle fill=%22%2322c55e%22 cx=%22200%22 cy=%22150%22 r=%2250%22/%3E%3C/svg%3E');"></div>
+                            <?php endif; ?>
                         </div>
-                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%2316a34a%22 width=%22400%22 height=%22300%22/%3E%3Ccircle fill=%22%2322c55e%22 cx=%22200%22 cy=%22150%22 r=%2250%22/%3E%3C/svg%3E');"></div>
-                    <?php endif; ?>
+                        
+                        <!-- Content -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-dark-green mb-3">
+                                <?php echo htmlspecialchars($budaya['nama']); ?>
+                            </h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <?php echo htmlspecialchars($budaya['deskripsi']); ?>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+                <?php endforeach; ?>
                 
-                <!-- Content -->
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-dark-green mb-3">
-                        <?php echo htmlspecialchars($budaya['nama']); ?>
-                    </h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        <?php echo htmlspecialchars($budaya['deskripsi']); ?>
-                    </p>
-                
+                <!-- Duplicate items for seamless loop -->
+                <?php foreach ($budayaData as $budaya): ?>
+                <div class="budaya-carousel-item flex-shrink-0 w-80 mx-4">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <!-- Image -->
+                        <div class="h-48 bg-gradient-to-br from-primary-green to-secondary-green relative overflow-hidden">
+                            <?php if (file_exists($budaya['foto'])): ?>
+                                <!-- Foto asli jika ada -->
+                                <img src="<?php echo htmlspecialchars($budaya['foto']); ?>" 
+                                     alt="<?php echo htmlspecialchars($budaya['nama']); ?>" 
+                                     class="w-full h-full object-cover">
+                            <?php else: ?>
+                                <!-- Fallback jika foto tidak ada -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fas fa-theater-masks text-6xl text-white opacity-50">
+                                        <svg class="fallback-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                    </i>
+                                </div>
+                                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%2316a34a%22 width=%22400%22 height=%22300%22/%3E%3Ccircle fill=%22%2322c55e%22 cx=%22200%22 cy=%22150%22 r=%2250%22/%3E%3C/svg%3E');"></div>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-dark-green mb-3">
+                                <?php echo htmlspecialchars($budaya['nama']); ?>
+                            </h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <?php echo htmlspecialchars($budaya['deskripsi']); ?>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
+            
+            <!-- Navigation Dots -->
+            <div class="flex justify-center mt-8 space-x-2">
+                <?php for ($i = 0; $i < count($budayaData); $i++): ?>
+                <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 <?php echo $i === 0 ? 'bg-primary-green' : ''; ?>" data-index="<?php echo $i; ?>"></button>
+                <?php endfor; ?>
+            </div>
         </div>
         
         <!-- Additional Info -->
@@ -98,3 +146,115 @@ $budayaData = getBudaya();
         </div>
     </div>
 </section>
+
+<script>
+// Budaya Carousel JavaScript - Auto Scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const carouselTrack = document.querySelector('.budaya-carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const items = document.querySelectorAll('.budaya-carousel-item');
+    
+    if (!carouselTrack || items.length === 0) return;
+    
+    let currentIndex = 0;
+    let isAutoPlaying = true;
+    let autoPlayInterval;
+    let scrollPosition = 0;
+    const itemWidth = 320; // w-80 = 320px
+    const gap = 16; // mx-4 = 16px
+    const totalItems = items.length / 2; // Karena kita duplicate items
+             const scrollSpeed = 0.5; // pixels per frame - lebih cepat
+    
+    // Initialize carousel
+    function initCarousel() {
+        // Set initial position
+        updateCarousel();
+        
+        // Start continuous auto-scroll
+        startContinuousScroll();
+        
+        // Add pause on hover
+        carouselTrack.addEventListener('mouseenter', pauseAutoPlay);
+        carouselTrack.addEventListener('mouseleave', startAutoPlay);
+        
+        // Add dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                scrollPosition = currentIndex * (itemWidth + gap);
+                updateCarousel();
+                resetAutoPlay();
+            });
+        });
+    }
+    
+    function updateCarousel() {
+        carouselTrack.style.transform = `translateX(-${scrollPosition}px)`;
+        
+        // Update current index based on scroll position
+        currentIndex = Math.round(scrollPosition / (itemWidth + gap));
+        if (currentIndex >= totalItems) {
+            currentIndex = 0;
+            scrollPosition = 0;
+        }
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('bg-primary-green', index === currentIndex);
+            dot.classList.toggle('bg-gray-300', index !== currentIndex);
+        });
+    }
+    
+    function startContinuousScroll() {
+        if (!isAutoPlaying) return;
+        
+        function animate() {
+            if (isAutoPlaying) {
+                scrollPosition += scrollSpeed;
+                
+                // Reset position for seamless loop
+                const maxScroll = totalItems * (itemWidth + gap);
+                if (scrollPosition >= maxScroll) {
+                    scrollPosition = 0;
+                }
+                
+                updateCarousel();
+                requestAnimationFrame(animate);
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    function startAutoPlay() {
+        isAutoPlaying = true;
+        startContinuousScroll();
+    }
+    
+    function pauseAutoPlay() {
+        isAutoPlaying = false;
+    }
+    
+    function resetAutoPlay() {
+        pauseAutoPlay();
+        setTimeout(() => {
+            isAutoPlaying = true;
+            startContinuousScroll();
+        }, 100);
+    }
+    
+    // Initialize
+    initCarousel();
+    
+    // Pause auto-play when tab is not visible
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            pauseAutoPlay();
+        } else {
+            startAutoPlay();
+        }
+    });
+    
+    console.log('Continuous scroll carousel initialized with', totalItems, 'items');
+});
+</script>

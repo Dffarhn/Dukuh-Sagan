@@ -104,23 +104,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Sticky Header
-    const header = document.querySelector('header');
+    // Sticky Header with Modern Scroll Effect
+    const header = document.getElementById('header');
     let lastScrollTop = 0;
     
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (header) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('header-scrolled');
+                console.log('Header scrolled - class added');
+            } else {
+                header.classList.remove('header-scrolled');
+                console.log('Header not scrolled - class removed');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
         
-        if (scrollTop > 100) {
-            header.classList.add('bg-white', 'shadow-lg');
-            header.classList.remove('bg-transparent');
-        } else {
-            header.classList.remove('bg-white', 'shadow-lg');
-            header.classList.add('bg-transparent');
-        }
-        
-        lastScrollTop = scrollTop;
-    });
+        console.log('Header scroll effect initialized');
+    } else {
+        console.log('Header element not found');
+    }
 
     // Back to Top Button
     const backToTopBtn = document.getElementById('back-to-top');

@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section class="hero-section relative overflow-hidden min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-emerald-900">
+<section class="hero-section relative overflow-hidden min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-emerald-900" style="margin-top: -80px; padding-top: 80px;">
     <!-- Modern Animated Background -->
     <div class="absolute inset-0">
         <!-- Geometric Pattern -->

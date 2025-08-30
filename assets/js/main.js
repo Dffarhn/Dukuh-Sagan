@@ -62,15 +62,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Loading Screen
     const loadingScreen = document.getElementById('loading-screen');
     
-    // Simulate loading time
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        // Enable scroll after loading
+    if (loadingScreen) {
+        // Simulate loading time
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            // Enable scroll after loading
+            document.body.style.overflow = 'auto';
+        }, 2500);
+        
+        // Disable scroll during loading
+        document.body.style.overflow = 'hidden';
+    } else {
+        // If no loading screen, ensure scroll is enabled
         document.body.style.overflow = 'auto';
-    }, 2500);
-    
-    // Disable scroll during loading
-    document.body.style.overflow = 'hidden';
+    }
     
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
